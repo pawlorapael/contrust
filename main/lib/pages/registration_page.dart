@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:main/pages/home_page.dart';
 
 
 
 class RegistrationPage extends StatelessWidget {
-  const RegistrationPage({super.key});
+  const RegistrationPage({super.key, required String userType});
 
    @override
   Widget build(BuildContext context) {
@@ -89,7 +90,8 @@ class RegistrationPage extends StatelessWidget {
       const SizedBox(height: 20),
       ElevatedButton(
         onPressed: () {
-          // Sign up happenings
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage())
+          );
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.yellow,

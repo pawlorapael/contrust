@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:main/pages/usertype_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'login_page.dart';
-
 
 
 class welcome_page extends StatefulWidget {
@@ -100,7 +99,7 @@ class _WelcomePageState extends State<welcome_page> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const LoginPage()),
+                    MaterialPageRoute(builder: (context) => const UsertypePage()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -109,7 +108,7 @@ class _WelcomePageState extends State<welcome_page> {
                       horizontal: 24, vertical: 12),
                 ),
                 child: const Text(
-                  "Go to Login",
+                  "Let's Go!",
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ),

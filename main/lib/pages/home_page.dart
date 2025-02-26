@@ -4,7 +4,6 @@ import 'package:main/pages/transaction_page.dart';
 import 'package:main/pages/buildingmaterial_page.dart';
 
 
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
