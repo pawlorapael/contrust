@@ -30,7 +30,16 @@ class TransactionPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Transaction History'),
+        backgroundColor: Colors.yellow[700],
+        title: const Text(
+          'CONTRUST',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.bold
+          ),
+        ),
+        centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.pop(context),

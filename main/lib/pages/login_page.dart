@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:main/pages/registration_page.dart';
 import 'package:main/pages/home_page.dart';
 
 
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  const LoginPage({super.key, required String userType});
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +81,7 @@ class LoginPage extends StatelessWidget {
                                     padding: const EdgeInsets.all(20),
                                     decoration: BoxDecoration(
                                       color: Colors.white.withOpacity(0.9),
+                                      borderRadius: BorderRadius.circular(20),
                                       boxShadow: [
                                         BoxShadow(
                                           color: Colors.black.withOpacity(0.2),

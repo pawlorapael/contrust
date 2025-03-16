@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:main/pages/usertype_page.dart';
+import 'package:main/pages/home_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 
@@ -99,7 +99,7 @@ class _WelcomePageState extends State<welcome_page> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const UsertypePage()),
+                    MaterialPageRoute(builder: (context) => const HomePage()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
