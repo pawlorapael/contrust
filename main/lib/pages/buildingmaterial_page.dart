@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class BuildingmaterialPage extends StatelessWidget {
   const BuildingmaterialPage({super.key});
 
@@ -39,10 +40,30 @@ class BuildingmaterialPage extends StatelessWidget {
             "Papaya",
             "Balete",
           ]),
+          _buildMaterialButton(context, "Cement", [
+            "Portland Cement",
+            "Masonry Cement",
+            "White Cement",
+          ]),
           _buildMaterialButton(context, "Steel", [
             "Stainless Steel",
             "Carbon Steel",
             "Alloy Steel",
+          ]),
+          _buildMaterialButton(context, "Concrete", [
+            "High Strength",
+            "Lightweight",
+            "Reinforced",
+          ]),
+          _buildMaterialButton(context, "Bricks", [
+            "Red Bricks",
+            "Fly Ash Bricks",
+            "Concrete Bricks",
+          ]),
+          _buildMaterialButton(context, "Clay", [
+            "Kaolin",
+            "Bentonite",
+            "Fire Clay",
           ]),
         ],
       ),
@@ -61,7 +82,7 @@ class BuildingmaterialPage extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        _showMaterialDialog(context, material, items);
+        _showMaterialBottomSheet(context, material, items);
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -84,33 +105,51 @@ class BuildingmaterialPage extends StatelessWidget {
     );
   }
 
-  void _showMaterialDialog(
+  void _showMaterialBottomSheet(
       BuildContext context, String material, List<String> items) {
-    showDialog(
+    showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(material),
-          content: SizedBox(
-            height: 200.0,
-            child: ListView.builder(
-              itemCount: items.length,
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  title: Text(items[index]),
-                  leading: const Icon(Icons.circle),
-                );
-              },
-            ),
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                material,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Expanded(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: items.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ListTile(
+                      title: Text(items[index]),
+                      leading: const Icon(Icons.check_circle_outline,
+                          color: Colors.green),
+                      onTap: () {
+                        Navigator.pop(context);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('${items[index]} selected'),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text("Close"),
-            ),
-          ],
         );
       },
     );

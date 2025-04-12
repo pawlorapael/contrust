@@ -25,6 +25,7 @@ class AboutPage extends StatelessWidget {
           style: TextStyle(fontSize: 20),
         ),
       ),
+      //nexttime na to, mga picture natin i2.
     );
   }
 }

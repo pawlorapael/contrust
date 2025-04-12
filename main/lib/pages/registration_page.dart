@@ -86,6 +86,8 @@ class RegistrationPage extends StatelessWidget {
       const SizedBox(height: 10),
       _buildInputField(label: 'Email'),
       const SizedBox(height: 10),
+      _buildInputField(label: 'Contact Number',),
+      const SizedBox(height: 10),
       _buildInputField(label: 'Password', obscureText: true),
       const SizedBox(height: 20),
       ElevatedButton(

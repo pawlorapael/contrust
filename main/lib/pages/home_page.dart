@@ -3,7 +3,8 @@ import 'package:main/pages/about_page.dart';
 import 'package:main/pages/transaction_page.dart';
 import 'package:main/pages/buildingmaterial_page.dart';
 import 'package:quickalert/quickalert.dart';
-import 'package:main/pages/home_page.dart';
+import 'package:main/pages/profile_page.dart';
+import 'package:main/pages/bidding_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,28 +51,27 @@ class HomePage extends StatelessWidget {
       ),
       drawer: Drawer(
         child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.yellow,
+         padding: EdgeInsets.zero,
+         children: [
+            DrawerHeader(
+             decoration: const BoxDecoration(
+               color: Colors.yellow,
               ),
-              child: Text(
-                '',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text('Home'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                   context,
+                    MaterialPageRoute(builder: (context) => ProfilePage()),
+                 );
+               },
+               child: CircleAvatar(
+                 radius: 80,
+                 backgroundImage: NetworkImage(
+                   'https://via.placeholder.com/150', 
+                  ),
+               ),
+             ),
+           ),
             ListTile(
               leading: const Icon(Icons.book),
               title: const Text('Transaction History'),
@@ -103,6 +103,16 @@ class HomePage extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.money),
+              title: const Text('Bidding'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BiddingPage()),
+                );
+              },
+            ),
+            ListTile(
               leading: const Icon(Icons.info),
               title: const Text('About'),
               onTap: () {
@@ -111,7 +121,7 @@ class HomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => AboutPage()),
                 );
               },
-            ),
+            )
           ],
         ),
       ),
@@ -523,6 +533,8 @@ class RegistrationPage extends StatelessWidget {
       _buildInputField(label: 'Birth Date'),
       const SizedBox(height: 10),
       _buildInputField(label: 'Email'),
+      const SizedBox(height: 10),
+      _buildInputField(label: 'Contact Number'),
       const SizedBox(height: 10),
       _buildInputField(label: 'Password', obscureText: true),
       const SizedBox(height: 20),
